@@ -1,0 +1,21 @@
+# Secrets / local config — never commit
+.env
+.env.*.local
+*.pem
+*.key
+
+# IDE
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+
+# Local Claude Code settings (skills/ are fine to share)
+.claude/settings.local.json

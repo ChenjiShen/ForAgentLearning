@@ -1,0 +1,95 @@
+[
+  {
+    "id": "knowledge-un-members",
+    "prompt": "How many member states are there in the United Nations as of 2026? Reply with just the number.",
+    "expected_substring": "193",
+    "difficulty": "easy",
+    "requires_tools": false,
+    "category": "knowledge",
+    "checker": "substring"
+  },
+  {
+    "id": "sandbox-read-day",
+    "prompt": "Read the file 'subdir/data.json' from the sandbox. What is the value of the 'day' field? Reply with just the number.",
+    "expected_substring": "1",
+    "difficulty": "easy",
+    "requires_tools": true,
+    "category": "file-read",
+    "checker": "substring"
+  },
+  {
+    "id": "sandbox-count-md",
+    "prompt": "Use list_dir on the sandbox root directory. How many .md files are there? Reply with just the number.",
+    "expected_substring": "3",
+    "difficulty": "easy",
+    "requires_tools": true,
+    "category": "file-list",
+    "checker": "substring"
+  },
+  {
+    "id": "sandbox-grep-example-lines",
+    "prompt": "Use run_command with 'grep -c' to count how many lines in the sandbox file 'notes.md' contain the word 'Example'. Reply with just the number.",
+    "expected_substring": "5",
+    "difficulty": "medium",
+    "requires_tools": true,
+    "category": "command-grep",
+    "checker": "substring"
+  },
+  {
+    "id": "sandbox-write-numbers",
+    "prompt": "Write a file named 'numbers.txt' to the sandbox containing the numbers 1 through 10, one per line. Then use run_command with 'wc -l numbers.txt' to verify the line count. Reply with just the number that wc reports.",
+    "expected_substring": "10",
+    "difficulty": "medium",
+    "requires_tools": true,
+    "category": "multi-tool",
+    "checker": "python",
+    "check_code": "# Verify numbers.txt was actually created with 1-10, one per line.\nf = sandbox_root / \"numbers.txt\"\nif f.exists():\n    expected = '\\n'.join(str(i) for i in range(1, 11))\n    passed = f.read_text().strip() == expected\nelse:\n    passed = False\n"
+  },
+  {
+    "id": "sandbox-second-heading",
+    "prompt": "Use run_command with grep to extract all lines that start with '## ' from the sandbox file 'notes.md'. What is the SECOND heading in the output? Reply with just the heading text (without the '## ' prefix).",
+    "expected": "The 5 Core Workflow Patterns",
+    "difficulty": "medium",
+    "requires_tools": true,
+    "category": "command-grep",
+    "checker": "exact"
+  },
+  {
+    "id": "sandbox-fetch-import",
+    "prompt": "Read the file 'fetch_url.py' from the sandbox. What is the exact import statement on line 1? Reply with just that line of code.",
+    "expected": "import urllib.request",
+    "difficulty": "medium",
+    "requires_tools": true,
+    "category": "file-read",
+    "checker": "exact"
+  },
+  {
+    "id": "sandbox-compare-headings",
+    "prompt": "Read both 'notes_day4_before.md' and 'notes.md' from the sandbox — two versions of an article about building AI agents. Count how many lines start with '## ' (top-level markdown headings) in EACH file. Reply with the two numbers separated by a comma, with the older version ('notes_day4_before.md') first. Example format: '4,3'.",
+    "expected_substring": "4, 3",
+    "difficulty": "hard",
+    "requires_tools": true,
+    "category": "multi-step-compare",
+    "checker": "substring"
+  },
+  {
+    "id": "sandbox-py-line-total",
+    "prompt": "Count the total number of lines across ALL .py files in the sandbox root directory. Use run_command with 'wc -l *.py' for efficiency. Then write the total line count (just the number) to a new file called 'py_total.txt'. Finally, read 'py_total.txt' back and reply with its exact content.",
+    "expected_substring": "11",
+    "difficulty": "hard",
+    "requires_tools": true,
+    "category": "multi-step-pipeline",
+    "checker": "python",
+    "check_code": "# Verify py_total.txt was created AND the agent answered correctly.\n# Two checks: file exists with right content, AND agent said '11'.\nf = sandbox_root / \"py_total.txt\"\nfile_ok = f.exists() and f.read_text().strip() == \"11\"\nanswer_ok = answer.strip() == \"11\"\npassed = file_ok and answer_ok\n"
+  },
+  {
+    "id": "sandbox-most-common-import",
+    "prompt": "A module is 'commonly imported' if it appears in multiple .py files. Use list_dir to find all .py files in the sandbox root, then use run_command with grep on those files to find all 'import' statements. Which module is imported by the MOST .py files in the sandbox? Ignore files that don't import anything. Reply with just the module name (the part after 'import ').",
+    "expected_substring": "os",
+    "difficulty": "hard",
+    "requires_tools": true,
+    "category": "multi-step-analysis",
+    "checker": "python",
+    "check_code": "# Accept any casing / whitespace variation of 'os'.\npassed = answer.strip().lower() == \"os\"\n"
+  }
+]

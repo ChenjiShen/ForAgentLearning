@@ -1,0 +1,72 @@
+[
+  {
+    "id": "math-basic",
+    "prompt": "What is 17 * 23 + 4?",
+    "expected_substring": "395"
+  },
+  {
+    "id": "math-nested",
+    "prompt": "Compute (12 + 8) * (30 / 6), then add 1.",
+    "expected_substring": "101"
+  },
+  {
+    "id": "no-tool-needed",
+    "prompt": "What is the capital of France? Answer in one word.",
+    "expected_substring": "Paris"
+  },
+  {
+    "id": "read-file-basic",
+    "prompt": "Read the file requirements.txt and tell me which package it requires.",
+    "expected_substring": "openai"
+  },
+  {
+    "id": "search-then-locate",
+    "prompt": "Which python file in this workspace defines MOCK_ORDERS? Find it with your tools and reply with its path.",
+    "expected_substring": "agent.py"
+  },
+  {
+    "id": "orders-revenue-sequential",
+    "prompt": "What is the total revenue from all delivered orders? Reply with the exact total amount.",
+    "expected_substring": "730.65"
+  },
+  {
+    "id": "orders-filter-sort",
+    "prompt": "Among orders of at least $100, which single order is the largest? Reply with the order id and its amount.",
+    "expected_substring": "O-1005"
+  },
+  {
+    "id": "orders-compare-multitool",
+    "prompt": "Who has spent more in total across all their orders, Alice or Bob? Reply with the winner's name and their exact total amount.",
+    "expected_substring": "595.25"
+  },
+  {
+    "id": "sandbox-list-py",
+    "prompt": "Use list_dir to list the sandbox root directory. How many .py files are in the sandbox root? Reply with just the number.",
+    "expected_substring": "3"
+  },
+  {
+    "id": "sandbox-read-json",
+    "prompt": "Read the file 'subdir/data.json' from the sandbox and tell me: what is the value of the 'project' field? Reply with just the project name.",
+    "expected_substring": "ForLearning"
+  },
+  {
+    "id": "sandbox-write-verify",
+    "prompt": "Write a file named 'day7_test.txt' to the sandbox containing exactly 'week03 day7 evals pass'. Then read it back to verify. Reply with the exact content you read back.",
+    "expected_substring": "week03 day7 evals pass"
+  },
+  {
+    "id": "sandbox-count-lines",
+    "prompt": "Use run_command to count how many lines are in the file 'notes.txt' in the sandbox. Reply with just the number.",
+    "expected_substring": "4"
+  },
+  {
+    "id": "sandbox-grep-urllib",
+    "prompt": "Use run_command with grep to find which Python file in the sandbox contains the string 'urllib'. Reply with just the filename.",
+    "expected_substring": "fetch_url.py"
+  },
+  {
+    "id": "sandbox-multi-step",
+    "prompt": "First use list_dir to see what's in the sandbox. Then use read_file to read 'notes.txt'. Tell me: what is the very first line of notes.txt? Reply with just that line.",
+    "expected_substring": "Week 3 sandbox notes."
+  }
+]
