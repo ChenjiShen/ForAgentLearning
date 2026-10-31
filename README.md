@@ -25,10 +25,6 @@ ForLearning/
 ```
 
 > **Day-by-day version of this roadmap: [PLAN.md](PLAN.md)** — what to learn and build every single day.
->
-> **After week 14 (or once Phases 1–3 feel solid): [ADVANCED_PLAN.md](ADVANCED_PLAN.md)** — the 8-week
-> systems track: durable runtimes, GraphRAG, queue-based swarms, fine-tuning your own tool-calling model,
-> production guardrails, and a deployed capstone.
 
 ## Roadmap
 
@@ -44,18 +40,6 @@ Work directly with the raw API, no frameworks.
 - **Week 6:** context management — compaction, what to keep/drop in long sessions
 - **Week 7:** memory and RAG for agents
 - **Week 8:** MCP — build one server and one client
-
-### Phase 3 — Advanced (weeks 9–14)
-- Multi-agent orchestration (and when it's worse than single-agent)
-- Sandboxed code execution
-- Planning patterns: ReAct vs. plan-then-execute vs. reflection
-- Long-horizon reliability
-- Agent benchmarks: SWE-bench, tau-bench, GAIA — read how they're built, run a slice
-
-### Phase 4 — Frontier (ongoing)
-- One paper per week, reproduce a small piece of one per month
-- Follow Anthropic/OpenAI engineering blogs; start with Anthropic's "Building Effective Agents"
-- Open problems for application engineers: agent evals, computer use, long-horizon autonomy
 
 ## Daily rhythm (60–90 min)
 
